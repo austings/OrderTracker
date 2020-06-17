@@ -6,4 +6,4 @@ This plugin handles sending reminders to the customer since it takes so long.
 Made for Smash It Sports Wordpress/Woocommerce
 
 Customers who have completed payments for BUYIN items get added to a distribution list,
-and get mailed the order tracker depending on current order status
+and get mailed the order tracker depending on current order status.
