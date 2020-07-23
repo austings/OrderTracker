@@ -121,6 +121,12 @@ function parse_json_and_send_buyin_emails()
 				array_push ($orderList,$thisObject['orderID']);
 			}
 			
+			//prevent sending twice on multiple cron job calls (sometimes gets called twice)
+			if($thisObject['nextReminder']!=date("m/d/Y",strtotime("Today")))
+			{
+				array_push($overwrite,$thisObject);
+				continue;
+			}
 			//fetch order status and don't send email if status is 'Completed' or 'Cancelled'
 			$orderObj = wc_get_order($thisObject['orderID']);
 			if($orderObj->get_status()=="completed"||$orderObj->get_status()=="cancelled")
